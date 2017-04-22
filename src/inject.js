@@ -7,6 +7,7 @@
 // Inspired by react-redux's `connect()` HOC factory function implementation:
 // https://github.com/rackt/react-redux
 
+import hoistNonReactStatics from 'hoist-non-react-statics';
 import React, {Component} from 'react';
 import invariant from 'invariant';
 import {intlShape} from './types';
@@ -57,5 +58,5 @@ export default function injectIntl(WrappedComponent, options = {}) {
         }
     }
 
-    return InjectIntl;
+    return hoistNonReactStatics(InjectIntl, WrappedComponent);
 }
